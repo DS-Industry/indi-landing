@@ -1,4 +1,3 @@
-//import Logo from './../../assets/Logo.svg';
 import Logo from './../../assets/Logo.svg';
 
 export default function UnAuthLayout ({ children } : { children: React.ReactNode }) {
