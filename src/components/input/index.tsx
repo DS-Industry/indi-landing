@@ -11,7 +11,7 @@ export default function Input (
         <>
             <input 
                 type="number" 
-                className=" border-b h-fit border-primary w-full text-center px-5  text-black outline-none text-4xl font-black font-inter-bold"
+                className=" border-b h-fit border-primary w-full text-center px-5  text-black outline-none text-4xl font-inter-black"
                 value={value.sum} 
                 min={50}
                 max={500}

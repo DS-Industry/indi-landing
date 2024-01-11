@@ -11,8 +11,21 @@
 .font-inter-bold {
   font-family: 'Inter Bold';
 }
+
+.font-inter-black {
+  font-family: 'Inter Black';
+}
+
 .font-inter-regular {
   font-family: 'Inter Regular';
+}
+
+.font-sans-light {
+  font-family: 'Source Sans Pro Light';
+}
+
+.font-sans-regular {
+  font-family: 'Source Sans Pro';
 }
 
 .logo {
