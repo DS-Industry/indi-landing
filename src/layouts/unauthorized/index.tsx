@@ -1,5 +1,5 @@
 //import Logo from './../../assets/Logo.svg';
-import Logo from './../../assets/Мой-каDS САМООБСЛУЖИВАНИЯ ENG версия 3 копия 1.png';
+import Logo from './../../assets/Logo.svg';
 
 export default function UnAuthLayout ({ children } : { children: React.ReactNode }) {
     return (

@@ -2,12 +2,14 @@
   "name": "indi-landing",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://DS-Industry.github.io/indi-landing",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy" : "yarn build && gh-pages -d dist"
   },
   "dependencies": {
     "autoprefixer": "^10.4.16",
@@ -26,6 +28,7 @@
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "gh-pages": "^6.1.1",
     "sass": "^1.69.7",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
