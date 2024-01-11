@@ -30,14 +30,14 @@ export default function Landing () {
     return (
         <UnAuthLayout>
             <main className=" text-white h-full w-full">
-                {/* <h1 className=" text-3xl text-left mb-5">Select order sum</h1> */}
+               <h1 className=" text-3xl text-left mb-5">Select order sum</h1>
                 {/* <p >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit rerum libero doloremque dignissimos fugit at dolorum voluptatem sint neque, repudiandae perferendis nulla alias excepturi vitae, ex eaque nobis delectus beatae?</p>    */}
                 <Input value={order} setValue={setOrder}/>
                 <div className="mt-5 w-full flex flex-row justify-between mb-5" >
-                    <Card sum={'150'} bgColor="bg-primary" handleClick={handleOrderClick}/> 
-                    <Card sum={'200'} bgColor="bg-primary" handleClick={handleOrderClick}/> 
-                    <Card sum={'300'} bgColor="bg-primary" handleClick={handleOrderClick} /> 
-                    <Card sum={'400'} bgColor="bg-primary" handleClick={handleOrderClick} /> 
+                    <Card sum={'150'} bgColor="bg-primary" prevOrder={order} handleClick={setOrder}/> 
+                    <Card sum={'200'} bgColor="bg-primary" prevOrder={order} handleClick={setOrder}/> 
+                    <Card sum={'300'} bgColor="bg-primary" prevOrder={order} handleClick={setOrder} /> 
+                    <Card sum={'400'} bgColor="bg-primary" prevOrder={order} handleClick={setOrder} /> 
                 </div>
                 {
                     order.sum && ( 
