@@ -27,10 +27,6 @@ export default function Payment () {
                     </div>
                     <div className=" w-full flex flex-col items-start px-5 mb-5 mt-10">
                         <p className=" font-bold">Your selection:</p>
-                        <div className=" flex flex-row justify-between w-full mt-3 font-sans-light " >
-                            <p>Box</p>
-                            <p className=" font-sans-regular font-bold">{state.box}</p>
-                        </div>
                         <div className=" flex flex-row justify-between w-full font-sans-light " >
                             <p>Amount to pay</p>
                             <p className=" font-sans-regular font-bold">{state.sum} ₹</p>
