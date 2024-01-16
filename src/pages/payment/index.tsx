@@ -1,10 +1,35 @@
 import { useLocation, useNavigate } from "react-router-dom"
+import  Logo from "./../../assets/logo.png";
 import UnAuthLayout from "../../layouts/unauthorized";
 import { useEffect } from "react";
 import Button from "../../components/button";
 import Human from "./../../assets/Saly-34.png";
+import axios from "axios";
+
+declare global {
+    interface Window {
+      // ⚠️ notice that "Window" is capitalized here
+      Razorpay: any;
+    }
+  }
 
 export default function Payment () {
+
+    function loadScript(src: string) {
+        return new Promise((resolve) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.async = true;
+            script.onload = () => {
+                resolve(true);
+            };
+            script.onerror = () => {
+                resolve(false);
+            };
+            document.body.appendChild(script);
+        });
+    }
+
 
     const { state } = useLocation();
     const navigate = useNavigate();
@@ -16,7 +41,70 @@ export default function Payment () {
         }
     }, [])
 
-    const handleClick = () => {}
+    const handleClick = () => {
+        const getOrderIdAsync = async () => {
+            try {
+                console.log('here');
+                const scriptResponse = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
+                if (!scriptResponse) throw new Error('Load script error');
+                console.log('here 2');
+                const orderResponse = await axios.post("http://localhost:3000/order/create", {
+                    amount: state.sum * 100 
+                }, {
+                    withCredentials: true,
+                });
+                console.log(orderResponse);
+                console.log('here 3');
+
+                if (!orderResponse) throw new Error('Get order id error');
+                const { orderId } = orderResponse.data;
+
+                console.log("order id -> ", orderId);
+
+                console.log(import.meta.env.VITE_RAZORPAY_KEY_SECRET);
+                console.log(import.meta.env.VITE_RAZORPAY_KEY_ID);
+
+                const options = {
+                    "key": `${import.meta.env.VITE_RAZORPAY_KEY_SECRET}`, // Enter the Key ID generated from the Dashboard
+                    "key_id" : `${import.meta.env.VITE_RAZORPAY_KEY_ID}`,
+                    "amount": state.sum * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                    "currency": "INR",
+                    "name": "MOY-KA!DS",
+                    "description": "Test Transaction",
+                    "image": { Logo },
+                    "order_id": `${orderId}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                    "handler": async function (response: any){
+        
+                        const result = await axios.post("http://localhost:3000/order/check", {
+                            response,
+                            deviceId: state.box,
+                            amount: state.sum
+                        }, {
+                            withCredentials: true
+                        });
+                        alert(result.data.signatureIsValid);
+                    },
+                    "prefill": {
+                        "name": "Test test",
+                        "email": "test@test.com",
+                        "contact": "9000090000"
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#0B68E1"
+                    }
+                };
+
+                const paymentObject = new window.Razorpay(options);
+                paymentObject.open();
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getOrderIdAsync();
+    }
 
     return (
         <div className=" text-white h-full">

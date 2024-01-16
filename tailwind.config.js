@@ -13,7 +13,9 @@ export default {
       xl: '1440px',
     },
     colors: {
-      accent: '#FF9E00',
+      accent: '#73AAF0',
+      toastSecondary: "#cbe3ff",
+      toastPrimary: "#4183ea",
       primary: '#0B68E1',
       black: '#000000',
       white: {

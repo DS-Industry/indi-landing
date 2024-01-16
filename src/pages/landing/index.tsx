@@ -4,6 +4,7 @@ import UnAuthLayout from "../../layouts/unauthorized";
 import Input from "../../components/input";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Button from "../../components/button";
+import Toast from "../../components/styled/toast";
 
 export default function Landing () {
     const [ order, setOrder ] = useState({
@@ -44,12 +45,7 @@ export default function Landing () {
                         <Button title="Continue" handleClick={handleOrderClick} value={order.sum} />
                     )
                 }
-                <div className=" w-full flex justify-center">
-                    <div className=" text-white-500 flex flex-col justify-between items-center w-11/12 mt-5 border border-black bg-accent border-opacity-5 rounded-md absolute top-1/2" >
-                        <p className=" text-lg font-inter-regular">Cost per 1 minute</p>
-                        <p className=" font-sans-regular text-3xl font-bold">40 ₹</p>
-                    </div>
-                </div>
+                <Toast title="Cost per 1 minute" body="40 ₹" />
             </main>
         </UnAuthLayout>
     )
