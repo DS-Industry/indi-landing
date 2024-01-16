@@ -2,7 +2,7 @@
   "name": "indi-landing",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://DS-Industry.github.io/indi-landing",
+  "homepage": "https://pay.moy-ka.com/",
   "type": "module",
   "scripts": {
     "dev": "vite",

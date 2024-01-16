@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/indi-landing',
+  base: 'https://pay.moy-ka.com',
   plugins: [react()],
 })

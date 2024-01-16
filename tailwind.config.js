@@ -13,6 +13,7 @@ export default {
       xl: '1440px',
     },
     colors: {
+      accent: '#FF9E00',
       primary: '#0B68E1',
       black: '#000000',
       white: {
