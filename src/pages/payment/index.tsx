@@ -4,7 +4,6 @@ import UnAuthLayout from "../../layouts/unauthorized";
 import { useEffect } from "react";
 import Button from "../../components/button";
 import Human from "./../../assets/Saly-34.png";
-import axios from "axios";
 import api from "../../api";
 
 declare global {
@@ -67,7 +66,7 @@ export default function Payment () {
                     "order_id": `${orderId}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                     "handler": async function (response: any){
         
-                        const result = await axios.post("order/check", {
+                        const result = await api.post("order/check", {
                             response,
                             orderId: orderId,
                             deviceId: state.box,
