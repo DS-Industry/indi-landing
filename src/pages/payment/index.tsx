@@ -48,13 +48,19 @@ export default function Payment () {
                 console.log('here');
                 setLoading(true);
                 const scriptResponse = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
-                if (!scriptResponse) navigate('/error');
+                if (!scriptResponse) {
+                    navigate('/error');
+                    setLoading(false);
+                }
                 console.log('here 2');
                 const orderResponse = await api.post("order/create", {
                     amount: state.sum * 100 
                 });
 
-                if (!orderResponse) navigate('/error');
+                if (!orderResponse) {
+                    navigate('/error');
+                    setLoading(false);
+                }
                 const { orderId } = orderResponse.data;
 
                 const options = {
@@ -68,7 +74,7 @@ export default function Payment () {
                     "order_id": `${orderId}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                     "handler": async function (response: any){
                         try {
-                            const result = await api.post("order/check", {
+                            await api.post("order/check", {
                                 response,
                                 orderId: orderId,
                                 deviceId: state.box,
