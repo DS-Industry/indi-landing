@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Button from "../../components/button";
 import Human from "./../../assets/Saly-34.png";
 import axios from "axios";
+import api from "../../api";
 
 declare global {
     interface Window {
@@ -48,10 +49,8 @@ export default function Payment () {
                 const scriptResponse = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
                 if (!scriptResponse) throw new Error('Load script error');
                 console.log('here 2');
-                const orderResponse = await axios.post("http://localhost:3000/order/create", {
+                const orderResponse = await api.post("order/create", {
                     amount: state.sum * 100 
-                }, {
-                    withCredentials: true,
                 });
 
                 if (!orderResponse) throw new Error('Get order id error');
@@ -68,13 +67,11 @@ export default function Payment () {
                     "order_id": `${orderId}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                     "handler": async function (response: any){
         
-                        const result = await axios.post("http://localhost:3000/order/check", {
+                        const result = await axios.post("order/check", {
                             response,
                             orderId: orderId,
                             deviceId: state.box,
                             amount: state.sum
-                        }, {
-                            withCredentials: true
                         });
                         alert(result.data.signatureIsValid);
                     },
