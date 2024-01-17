@@ -3,7 +3,7 @@ import { BiInfoCircle } from "react-icons/bi";
 export default function Toast ({ title, body } : {title: string, body: string}) {
     return (
         <div className=" w-full flex justify-center h-16">
-            <div className=" text-black flex flex-row justify-start items-start w-11/12 mt-5 bg-toastSecondary rounded-lg absolute top-1/2 shadow-[0px_2px_3px_1px_rgb(0,0,0,0.3)]" >
+            <div className=" text-black flex flex-row justify-start w-full items-start mt-2 bg-toastSecondary rounded-lg shadow-[0px_2px_3px_1px_rgb(0,0,0,0.3)]" >
                 <div className=" w-3 h-14 bg-toastPrimary rounded-l-lg">
                     <p className=" invisible ">T</p>
                 </div>

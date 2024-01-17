@@ -12,6 +12,7 @@ export default function Landing () {
         sum: ''
     });
     const [params] = useSearchParams();
+    const bayNumber = params.get('bay');
     const navigate = useNavigate();
 
     //const [ isInput, setIsInput ] = useState(false);
@@ -30,7 +31,7 @@ export default function Landing () {
 
     return (
         <UnAuthLayout>
-            <main className=" text-white h-full w-full mt-20">
+            <div className=" text-white h-full w-full mt-20">
                <h1 className=" text-3xl text-left mb-5">Select order sum</h1>
                 {/* <p >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit rerum libero doloremque dignissimos fugit at dolorum voluptatem sint neque, repudiandae perferendis nulla alias excepturi vitae, ex eaque nobis delectus beatae?</p>    */}
                 <Input value={order} setValue={setOrder}/>
@@ -45,8 +46,13 @@ export default function Landing () {
                         <Button title="Continue" handleClick={handleOrderClick} value={order.sum} />
                     )
                 }
-                <Toast title="Cost per 1 minute" body="40 ₹" />
-            </main>
+                <div className="w-full">
+                    <div className=" fixed top-1/2 w-10/12">
+                        <Toast title="Cost per 1 minute" body="40 ₹" />
+                        {!bayNumber && <Toast title="Please scan QR-code again" body="" /> }
+                    </div>
+                </div>
+            </div>
         </UnAuthLayout>
     )
 }

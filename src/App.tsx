@@ -10,7 +10,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Landing />} />
-      <Route path='/pay' element={<Payment />} />
+      <Route path='/pay' element={<Payment />} errorElement={<ErrorPayment />} />
       <Route path='/error' element={<ErrorPayment />} />
       <Route path='/success' element={<SuccessPayment />} />
     </Routes>

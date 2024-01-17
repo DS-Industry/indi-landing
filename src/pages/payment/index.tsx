@@ -36,11 +36,8 @@ export default function Payment () {
     const [ loading, setLoading ] = useState<boolean>(false);
 
     useEffect(() => {
-        if (!state || !state.sum || !state.box) {
-            console.log(state);
-            navigate('/')
-        }
-    }, [state.sum])
+        if (!state || (state && (!state.sum || !state.box))) navigate(`/`)
+    }, [])
 
     const handleClick = () => {
         const getOrderIdAsync = async () => {
@@ -50,16 +47,14 @@ export default function Payment () {
                 const scriptResponse = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
                 if (!scriptResponse) {
                     navigate('/error');
-                    setLoading(false);
                 }
-                console.log('here 2');
                 const orderResponse = await api.post("order/create", {
                     amount: state.sum * 100 
                 });
+                setLoading(false);
 
                 if (!orderResponse) {
                     navigate('/error');
-                    setLoading(false);
                 }
                 const { orderId } = orderResponse.data;
 
@@ -81,10 +76,9 @@ export default function Payment () {
                                 amount: state.sum
                             });
                             navigate('/success')
-                            setLoading(false);
+                            
                         } catch (e) {
                             navigate('/error')
-                            setLoading(false);
                         }
                     },
                     "prefill": {
@@ -120,14 +114,14 @@ export default function Payment () {
                         <p className=" font-bold">Your selection:</p>
                         <div className=" flex flex-row justify-between w-full font-sans-light " >
                             <p>Amount to pay</p>
-                            <p className=" font-sans-regular font-bold">{state.sum} ₹</p>
+                            <p className=" font-sans-regular font-bold">{state && state.sum} ₹</p>
                         </div>
                     </div>
                     <div className=" mt-16 flex w-full justify-center"> {
                         !loading ? (
                             <Button value="" handleClick={handleClick} title="Pay"/>
                         ) : (
-                            <button type="button" className="bg-primary text-white-500 w-72 h-12 text-xl mt-5 rounded-3xl px-3 font-inter-regular flex items-center justify-center" disabled>
+                            <button type="button" className="bg-primary text-white-500 w-72 h-12 text-lg mt-5 rounded-3xl px-3 font-inter-regular flex items-center justify-center" disabled>
                                 <div className=" animate-spin flex items-center justify-center rounded-full w-6 h-6 bg-gradient-to-tr from-toastPrimary to-toastSecondary mr-5">
                                     <div className="h-4 w-4 rounded-full bg-white-600"></div>
                                 </div>
