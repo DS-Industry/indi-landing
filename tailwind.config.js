@@ -18,6 +18,8 @@ export default {
       toastPrimary: "#4183ea",
       primary: '#0B68E1',
       black: '#000000',
+      error: '#FF0000',
+      success: '#008000',
       white: {
         600: '#F5F5F5',
         500: '#FFF',

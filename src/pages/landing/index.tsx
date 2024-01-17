@@ -30,7 +30,7 @@ export default function Landing () {
 
     return (
         <UnAuthLayout>
-            <main className=" text-white h-full w-full">
+            <main className=" text-white h-full w-full mt-20">
                <h1 className=" text-3xl text-left mb-5">Select order sum</h1>
                 {/* <p >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit rerum libero doloremque dignissimos fugit at dolorum voluptatem sint neque, repudiandae perferendis nulla alias excepturi vitae, ex eaque nobis delectus beatae?</p>    */}
                 <Input value={order} setValue={setOrder}/>
