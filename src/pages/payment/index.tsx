@@ -53,16 +53,9 @@ export default function Payment () {
                 }, {
                     withCredentials: true,
                 });
-                console.log(orderResponse);
-                console.log('here 3');
 
                 if (!orderResponse) throw new Error('Get order id error');
                 const { orderId } = orderResponse.data;
-
-                console.log("order id -> ", orderId);
-
-                console.log(import.meta.env.VITE_RAZORPAY_KEY_SECRET);
-                console.log(import.meta.env.VITE_RAZORPAY_KEY_ID);
 
                 const options = {
                     "key": `${import.meta.env.VITE_RAZORPAY_KEY_SECRET}`, // Enter the Key ID generated from the Dashboard
@@ -77,6 +70,7 @@ export default function Payment () {
         
                         const result = await axios.post("http://localhost:3000/order/check", {
                             response,
+                            orderId: orderId,
                             deviceId: state.box,
                             amount: state.sum
                         }, {
