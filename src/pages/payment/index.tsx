@@ -64,7 +64,7 @@ export default function Payment () {
                     "amount": state.sum * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
                     "currency": "INR",
                     "name": "MOY-KA!DS",
-                    "description": "Test Transaction",
+                    "description": "Transaction",
                     "image": { Logo },
                     "order_id": `${orderId}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                     "handler": async function (response: any){
