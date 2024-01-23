@@ -81,11 +81,6 @@ export default function Payment () {
                             navigate('/error')
                         }
                     },
-                    "prefill": {
-                        "name": "Test test",
-                        "email": "test@test.com",
-                        "contact": "9000090000"
-                    },
                     "notes": {
                         "address": "Razorpay Corporate Office"
                     },
