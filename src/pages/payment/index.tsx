@@ -48,8 +48,8 @@ export default function Payment () {
                 if (!scriptResponse) {
                     navigate('/error');
                 }
-                const orderResponse = await api.post("order/create", {
-                    amount: state.sum * 100 
+                const orderResponse = await api.post("https://indi-landing-backend-xzzi7.ondigitalocean.app/order/create", {
+                    amount: state.sum * 100
                 });
                 setLoading(false);
 
@@ -69,14 +69,14 @@ export default function Payment () {
                     "order_id": `${orderId}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                     "handler": async function (response: any){
                         try {
-                            await api.post("order/check", {
+                            await api.post("https://indi-landing-backend-xzzi7.ondigitalocean.app/order/check", {
                                 response,
                                 orderId: orderId,
                                 deviceId: state.box,
                                 amount: state.sum
                             });
                             navigate('/success')
-                            
+
                         } catch (e) {
                             navigate('/error')
                         }
