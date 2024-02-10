@@ -47,7 +47,7 @@ export default function Payment() {
         if (!scriptResponse) {
           navigate("/error");
         }
-        const orderResponse = await api.post("order/create", {
+        const orderResponse = await api.post("https://indi-landing-backend-xzzi7.ondigitalocean.app/order/create", {
           amount: state.sum * 100,
         });
         setLoading(false);
@@ -58,8 +58,8 @@ export default function Payment() {
         const { orderId } = orderResponse.data;
 
         const options = {
-          key: `${import.meta.env.VITE_RAZORPAY_KEY_SECRET}`, // Enter the Key ID generated from the Dashboard
-          key_id: `${import.meta.env.VITE_RAZORPAY_KEY_ID}`,
+          key: `rzp_live_28uKBwwEso0CLe`, // Enter the Key ID generated from the Dashboard
+         // key_id: `${import.meta.env.VITE_RAZORPAY_KEY_ID}`,
           amount: state.sum * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
           currency: "INR",
           name: "MOY-KA!DS",
@@ -68,7 +68,7 @@ export default function Payment() {
           order_id: `${orderId}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
           handler: async function (response: any) {
             try {
-              await api.post("order/check", {
+              await api.post("https://indi-landing-backend-xzzi7.ondigitalocean.app/order/check", {
                 response,
                 orderId: orderId,
                 deviceId: state.box,
