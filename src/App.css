@@ -1,11 +1,9 @@
 @import './styles/fonts.scss';
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
-  background-color: #F5F5F5;
-  font-family: "Source Sans Pro";
+  font-family: "Arial";
 }
 
 .font-inter-bold {
