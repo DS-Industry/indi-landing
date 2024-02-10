@@ -57,10 +57,9 @@ export default function Payment () {
                     navigate('/error');
                 }
                 const { orderId } = orderResponse.data;
-
                 const options = {
-                    "key": `${import.meta.env.VITE_RAZORPAY_KEY_SECRET}`, // Enter the Key ID generated from the Dashboard
-                    "key_id" : `${import.meta.env.VITE_RAZORPAY_KEY_ID}`,
+                    "key": `KCXlmLuXdWl4Gb8MK475F56S`, // Enter the Key ID generated from the Dashboard
+                    "key_id" : `rzp_live_28uKBwwEso0CLe`,
                     "amount": state.sum * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
                     "currency": "INR",
                     "name": "MOY-KA!DS",
