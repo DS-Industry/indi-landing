@@ -56,9 +56,6 @@ export default function Payment() {
           navigate("/error");
         }
         const { orderId } = orderResponse.data;
-        console.log("key id -> ", import.meta.env.VITE_RP_KEY_ID);
-        console.log("key secret -> ", import.meta.env.VITE_RP_KEY_SECRET);
-
         const options = {
           key: import.meta.env.VITE_RP_KEY_ID, // Enter the Key ID generated from the Dashboard
           // key_id: `${import.meta.env.VITE_RAZORPAY_KEY_ID}`,
