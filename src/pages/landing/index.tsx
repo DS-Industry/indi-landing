@@ -133,7 +133,7 @@ export default function Landing() {
                 Vacuum
               </dt>
               <dd className="text-1xl font-extrabold text-blue-600 md:text-4xl">
-                ₹10 /min
+                ₹10 / 3 min.
               </dd>
             </div>
           </div>
