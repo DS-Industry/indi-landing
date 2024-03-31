@@ -125,7 +125,7 @@ export default function Landing() {
                 Car Wash
               </dt>
               <dd className="text-1xl font-extrabold text-blue-600 md:text-4xl">
-                ₹40 /min
+                ₹30 /min
               </dd>
             </div>
             <div className="flex flex-col rounded-lg px-4 py-8 text-center">
